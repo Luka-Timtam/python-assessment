@@ -1,18 +1,16 @@
-# Pizza Bot Program
-#07/06/2023
-#bugs - Phone number input allows letters
-#     - name input allows numbers
+# Watch Bot Program
+
 
 import random
 from random import randint
 
 # List of random names
 names = ["Luka", "kade", "Jayden", "Jason", "Max verstappen", "Michael Schumacher", "Rory", "Antonie", "Lucas", "Charles Leclerc"]
-# list of pizza names
-pizza_names = ['Margherita','Pepperoni','Hawaiian','Cheese','Italian','Veggie','Vegan','Chicken Deluxe',
-               'Mega Meat Lovers','Seafood Deluxe','Apricot Chicken Deluxe','BBQ Chicken Deluxe']
-#list of pizza prices
-pizza_prices = [8.50, 8.50, 8.50, 8.50, 8.50, 8.50, 8.50, 13.50, 13.50, 13.50, 13.50, 13.50]
+# list of watch models
+watch_models = ['Casio Worldtime','Timex Weekender','Seiko Speedtimer','Tissot PRX 40mm','Tag Heuer Formula 1 Gulf Special Edition','Tag Heuer Monaco','Rado Captain Cook','Longines Pilot Matjek',
+               'Rolex GMT Pepsi','Audemars Piguet Royal Oak','Jacob & Co Bugatti Chiron Tourbillion','Patek Phillipe Nautilus Tiffany&Co Blue']
+#list of watch prices
+watch_prices = [70, 85, 800, 850, 2450, 6750, 7000, 8000, 16000, 55000, 650000, 7400000]
 # Customer details dictonary
 customer_details = {}
 
@@ -36,9 +34,9 @@ def welcome():
     '''
     num = randint(0,9)
     name = (names[num])
-    print("*** Welcome to Dream Pizza ***")
+    print("*** Welcome to Timmermans Watches ***")
     print("*** My name is",name, "***")
-    print("*** I will be here to help you order your delicious Dream Pizza ***")
+    print("*** I will be here to help you find your next timepiece ***")
 
 # Menu for pickup or delivery
 
@@ -105,30 +103,40 @@ def delivery_info():
     print (customer_details['suburb'])
 
 
-# Pizza menu 
+# Watch menu 
 def menu():
-    number_pizzas = 12
-    for count in range (number_pizzas):
-        print("{} {} ${:.2f}" .format(count+1, pizza_names[count], pizza_prices[count]))
+    number_watches = 12
+    for count in range (number_watches):
+        print("{} {} ${:.2f}" .format(count+1, watch_models[count], watch_prices[count]))
 
 
 
 
-# Choose total number of pizzas - max 5
+# Choose total number of watches
+def order_watches():
+    print("")
+    print("Due to scarcity, there is a limit of 12 items available for you to order. If you select more than 5 items, shipping is free. Otherwise there is a $9.00 shipping fee")
+    print ("How many watches would you like to order?")
+    while True:
+                num_watches = int(input("Please enter a number: "))
+                if num_watches >= 1 and num_watches <= 12:
+                    print("You have chosen to order",num_watches, "watches")
+                    break
+                else:
+                    print ("The number must be between 1 and 12")
 
 
 
 
 
 
-
-# Pizza order - from menu - print each pizza ordered with cost
-
+# Watch order - from menu - print each watch ordered with cost
 
 
 
 
-# Print order out - including if order is delivery or pickup and names and price of each pizza  - total cost including any delivery charge
+
+# Print order out - including if order is delivery or pickup and names and price of each watch  - total cost including any delivery charge
 
 
 
@@ -159,6 +167,7 @@ def main():
     welcome()
     order_type()
     menu()
+    order_watches()
 
 main()
 

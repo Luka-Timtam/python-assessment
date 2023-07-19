@@ -1,4 +1,4 @@
-#Pizza Bot Program
+#Watch Bot Program
 import random
 from random import randint
 
@@ -14,9 +14,9 @@ def welcome():
     '''
     num = randint(0,9)
     name = (names[num])
-    print("*** Welcome to Dream Pizza ***")
+    print("*** Welcome to Timmermans Watches ***")
     print("*** My name is",name, "***")
-    print("*** I will be here to help you order your delicious Dream Pizza ***")
+    print("*** I will be here to help you find your next timepiece ***")
 
 def main():
     '''
