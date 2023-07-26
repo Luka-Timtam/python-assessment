@@ -13,6 +13,10 @@ watch_models = ['Casio Worldtime','Timex Weekender','Seiko Speedtimer','Tissot P
 watch_prices = [70, 85, 800, 850, 2450, 6750, 7000, 8000, 16000, 55000, 650000, 7400000]
 # Customer details dictonary
 customer_details = {}
+#list to store ordered watches
+order_list = []
+#list to store watch prices
+order_cost = []
 
 # validates inputs to check if they are blank
 def not_blank(question): 
@@ -114,17 +118,39 @@ def menu():
 
 # Choose total number of watches
 def order_watches():
-    print("")
-    print("Due to scarcity, there is a limit of 12 items available for you to order. If you select more than 5 items, shipping is free. Otherwise there is a $9.00 shipping fee")
-    print ("How many watches would you like to order?")
+    #ask for how mnay they would like to order
+    num_watches = 0
+    print ("")
+    print ("Due to scarcity, there is a limit of 12 items available for you to order. If you select more than 5 items, shipping is free. Otherwise there is a $9.00 shipping fee")
     while True:
-                num_watches = int(input("Please enter a number: "))
-                if num_watches >= 1 and num_watches <= 12:
-                    print("You have chosen to order",num_watches, "watches")
-                    break
-                else:
-                    print ("The number must be between 1 and 12")
-
+        try:
+            num_watches = int(input("How many watches would you like to order? "))
+            if num_watches >= 1 and num_watches <= 12: 
+                break
+            else: 
+                print("Your order must be between 1 and 12")
+        except ValueError:
+            print ("That is not a valid number")
+            print ("Please enter a number inbetween 1 or 12")
+    #choose watch from menu
+    #count down until all watches are ordered
+    for item in range(num_watches):
+        while num_watches > 0:
+            while True:
+                try:
+                    watch_ordered = int(input("Please choose your watches by entering the number from the menu "))
+                    if watch_ordered >= 1 and watch_ordered <= 12: 
+                        break
+                    else: 
+                        print("Your order must be between 1 and 12")
+                except ValueError:
+                    print ("That is not a valid number")
+                    print ("Please enter a number inbetween 1 or 12")
+            watch_ordered = watch_ordered-1
+            order_list.append(watch_models[watch_ordered])
+            order_list.append(watch_prices[watch_ordered])
+            print("{} ${:.2f}" .format(watch_models[watch_ordered],watch_prices[watch_ordered]))
+            num_watches = num_watches-1
 
 
 
@@ -171,3 +197,4 @@ def main():
 
 main()
 
+#lesson 21

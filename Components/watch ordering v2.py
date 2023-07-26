@@ -42,15 +42,20 @@ while True:
 
 
 
-print(num_watches)
-
-
 #choose watch from menu
 #count down until all watches are ordered
-print ("Please choose your watches by entering the number from the menu")
 for item in range(num_watches):
     while num_watches > 0:
-        watch_ordered = int(input())
+        while True:
+            try:
+                watch_ordered = int(input("Please choose your watches by entering the number from the menu "))
+                if watch_ordered >= 1 and watch_ordered <= 12: 
+                    break
+                else: 
+                    print("Your order must be between 1 and 12")
+            except ValueError:
+                print ("That is not a valid number")
+                print ("Please enter a number inbetween 1 or 12")
         watch_ordered = watch_ordered-1
         order_list.append(watch_models[watch_ordered])
         order_list.append(watch_prices[watch_ordered])
