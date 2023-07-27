@@ -62,12 +62,3 @@ for item in range(num_watches):
         print("{} ${:.2f}" .format(watch_models[watch_ordered],watch_prices[watch_ordered]))
         num_watches = num_watches-1
         
-
-
-#Lesson 20
-
-
-
-
-
-
