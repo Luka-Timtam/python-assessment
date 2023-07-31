@@ -157,13 +157,22 @@ def order_watches():
 
 
 # Watch order - from menu - print each watch ordered with cost
-
-
-
-
-
 # Print order out - including if order is delivery or pickup and names and price of each watch  - total cost including any delivery charge
+def print_order():
+    total_cost = sum(order_cost) 
+    print("Customer Details")
+    print(f"Customer Name: {customer_details['name']} \nCustomer Phone: {customer_details['phone']} \nCustomer Address: {customer_details['house']} {customer_details['street']} {customer_details['suburb']}")
+    print()
+    print("Order Details")
+    count = 0
+    for item in order_list:
+        print("Ordered: {} Cost: ${:.2f}".format(item, order_cost[count]))
+        count = count+1
+    print()
+    print("Order Cost Details")
+    print(f"Total: ${total_cost}")
 
+#lesson 24
 
 
 
@@ -194,6 +203,7 @@ def main():
     order_type()
     menu()
     order_watches()
+    print_order()
 
 main()
 

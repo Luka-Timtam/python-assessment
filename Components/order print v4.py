@@ -18,6 +18,7 @@ def print_order():
     print()
     print("Order Cost Details")
     print(f"Total: ${total_cost}")
+    
 print_order()
 
 #lesson 24
