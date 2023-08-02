@@ -168,6 +168,9 @@ def print_order(del_pick):
     print("Customer Details")
     if del_pick == "delivery":
          print("Your order is for Delivery")
+         if len(order_list) < 6:
+            total_cost = total_cost + 12
+            print("You have ordered 5 or less items, a $12 delivery charge will incur")
          print(f"Customer Name: {customer_details['name']} \nCustomer Phone: {customer_details['phone']} \nCustomer Address: {customer_details['house']} {customer_details['street']} {customer_details['suburb']}")
     elif del_pick == "pickup":
         print("Your order is for Pickup")
