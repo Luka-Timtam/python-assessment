@@ -45,6 +45,7 @@ def welcome():
 # Menu for pickup or delivery
 
 def order_type():
+    del_pick = ""
     print ("Is your order for pickup or delivery?")
     print ("For pickup please enter 1")
     print ("For delivery please enter 2")
@@ -55,16 +56,19 @@ def order_type():
                 if delivery == 1:
                     print ("Pickup")
                     pickup_info()
+                    del_pick = "pickup"
                     break
                 elif delivery == 2:
                     print ("Delivery")
                     delivery_info()
+                    del_pick = "delivery"
                     break
             else:
                 print ("The number must be 1 or 2")
         except ValueError:
             print ("That is not a valid number")
             print ("Please enter 1 or 2")
+    return del_pick
 
 
 
@@ -78,7 +82,7 @@ def pickup_info():
     question = ("Please enter your phone number: ")
     customer_details['phone'] = not_blank(question)
     print (customer_details['phone'])
-    print(customer_details)
+
 
 
 
@@ -148,7 +152,7 @@ def order_watches():
                     print ("Please enter a number inbetween 1 or 12")
             watch_ordered = watch_ordered-1
             order_list.append(watch_models[watch_ordered])
-            order_list.append(watch_prices[watch_ordered])
+            order_cost.append(watch_prices[watch_ordered])
             print("{} ${:.2f}" .format(watch_models[watch_ordered],watch_prices[watch_ordered]))
             num_watches = num_watches-1
 
@@ -158,10 +162,17 @@ def order_watches():
 
 # Watch order - from menu - print each watch ordered with cost
 # Print order out - including if order is delivery or pickup and names and price of each watch  - total cost including any delivery charge
-def print_order():
+def print_order(del_pick):
+    print()
     total_cost = sum(order_cost) 
     print("Customer Details")
-    print(f"Customer Name: {customer_details['name']} \nCustomer Phone: {customer_details['phone']} \nCustomer Address: {customer_details['house']} {customer_details['street']} {customer_details['suburb']}")
+    if del_pick == "delivery":
+         print("Your order is for Delivery")
+         print(f"Customer Name: {customer_details['name']} \nCustomer Phone: {customer_details['phone']} \nCustomer Address: {customer_details['house']} {customer_details['street']} {customer_details['suburb']}")
+    elif del_pick == "pickup":
+        print("Your order is for Pickup")
+        print(f"Customer Name: {customer_details['name']} \nCustomer Phone: {customer_details['phone']}")
+   
     print()
     print("Order Details")
     count = 0
@@ -172,7 +183,7 @@ def print_order():
     print("Order Cost Details")
     print(f"Total: ${total_cost}")
 
-#lesson 24
+#lesson 25
 
 
 
@@ -200,11 +211,11 @@ def main():
     Returns: None
     '''
     welcome()
-    order_type()
+    del_pick = order_type()
     menu()
     order_watches()
-    print_order()
+    print_order(del_pick)
 
 main()
 
-#lesson 21
+#lesson 25
