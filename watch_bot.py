@@ -186,7 +186,7 @@ def print_order(del_pick):
     print("Order Cost Details")
     print(f"Total: ${total_cost}")
 
-#lesson 25
+#lesson 26
 
 
 
@@ -221,4 +221,4 @@ def main():
 
 main()
 
-#lesson 25
+#lesson 26
