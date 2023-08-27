@@ -265,5 +265,3 @@ def main():
 
 
 main()
-
-# lesson 28
